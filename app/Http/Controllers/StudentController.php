@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
-use App\Models\student;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
@@ -68,10 +68,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(student $student)
+    public function show(Student $student)
     {
         $this->authorize('view', $student);
 
@@ -83,10 +83,10 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(student $student)
+    public function edit(Student $student)
     {
         //
     }
@@ -95,10 +95,10 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\UpdatestudentRequest  $request
-     * @param  \App\Models\student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatestudentRequest $request, student $student)
+    public function update(UpdatestudentRequest $request, Student $student)
     {
         $this->authorize('update', $student);
 
@@ -116,10 +116,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(student $student)
+    public function destroy(Student $student)
     {
         $this->authorize('delete', $student);
 
