@@ -1,0 +1,95 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Support\Facades\DB;
+use App\Models\$CLASS_NAME$;
+
+class $CLASS_NAME$Process
+{
+    protected $request, $$NAME$;
+
+    /**
+     * Create a new process instance.
+     *
+     * @return void
+     */
+	public function __construct($request = null)
+	{
+		$this->request = $request ? (object) $request : request();
+	}
+
+	/**
+     * Execute find process.
+     *
+     * @return void
+    */
+    public function find($id)
+    {
+    	$this->$NAME$ = $CLASS_NAME$::findOrFail($id);
+
+    	return $this;
+    }
+
+    /**
+     * Retrive $CLASS_NAME$.
+     *
+     * @return
+    */
+    public function $NAME$()
+    {
+    	return $this->$NAME$;
+    }
+
+	/**
+     * Execute create process.
+     *
+     * @return void
+    */
+    public function create()
+    {
+    	DB::transaction(function(){
+    		$this->create$CLASS_NAME$();
+    	});
+    }
+
+    /**
+     * Execute update process.
+     *
+     * @return void
+    */
+    public function update()
+    {
+    	DB::transaction(function(){
+            $this->update$CLASS_NAME$();
+        });
+    }
+
+    /**
+     * Create $CLASS_NAME$.
+     *
+     * @return void
+    */
+    private function create$CLASS_NAME$()
+    {
+    	$this->$NAME$ = $CLASS_NAME$::create([
+    		//
+    	]);
+
+    	return $this;
+    }
+
+    /**
+     * Update $CLASS_NAME$.
+     *
+     * @return void
+    */
+    private function update$CLASS_NAME$()
+    {
+    	$this->$NAME$->update([
+    		//
+    	]);
+
+    	return $this;
+    }
+}
