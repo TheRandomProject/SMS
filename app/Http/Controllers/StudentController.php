@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Processes\StudentProcess;
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
 use App\Models\Student;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -13,10 +15,10 @@ class StudentController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth']);
+    // }
 
     /**
      * Display a listing of the resource.
@@ -25,13 +27,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Student::class);
+        // $this->authorize('view', Student::class);
 
-        $query = Student::selectedFields()
-                    ->joinStudentLoginCredential()
-                    ->withRelations()
-                    ->sortable()
-                    ->searchable()
+        $query = Student::all();
+
+        return $query;
 
     }
 
@@ -51,16 +51,18 @@ class StudentController extends Controller
      * @param  \App\Http\Requests\StorestudentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorestudentRequest $request, StudetnProcess $process)
+    public function store(Request $request, StudentProcess $process)
     {
-        $this->authorize('create', Student::class);
+        // $this->authorize('create', Student::class);
+        dd($request);
 
         $process->create();
 
-        activity()
-            ->performedOn($process->student())
-            ->withProperties($process->student())
-            ->log('Student has been created');
+
+        // activity()
+        //     ->performedOn($process->student())
+        //     ->withProperties($process->student())
+        //     ->log('Student has been created');
 
         return $process->student();
     }

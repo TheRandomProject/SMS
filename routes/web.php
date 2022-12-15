@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::controller(App\Http\Controllers\StudentController::class)->group(function(){
+    Route::get('/students', 'index');
+    Route::get('/student/{id}', 'show');
+    Route::post('/student', 'store');
 });
