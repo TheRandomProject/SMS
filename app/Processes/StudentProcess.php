@@ -75,6 +75,7 @@ class StudentProcess
     private function createStudent()
     {
     	$this->student = Student::create([
+            'student_number'=> $this->studentID(),
     		'firstname'     => Str::ucfirst($this->request->firstname),
             'lastname'      => Str::ucfirst($this->request->lastname),
             'middlename'    => Str::ucfirst($this->request->middlename),
@@ -103,5 +104,21 @@ class StudentProcess
     	]);
 
     	return $this;
+    }
+
+    private function studentID()
+    {
+
+        $year  = date('y');
+
+        $studentCount = Student::where('created_at', 2022)
+                            ->count();
+
+        $studentNumber = $studentCount + 1;
+
+        $paddedNumber = sprintf('%05d', $studentNumber);
+
+        return "ST{$year}{$paddedNumber}";
+
     }
 }
