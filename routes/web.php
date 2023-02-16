@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
-Route::controller(App\Http\Controllers\StudentController::class)->group(function(){
-    Route::get('/students', 'index');
-    Route::get('/student/{id}', 'show');
-    Route::post('/student', 'store');
-});
+/*
+|--------------------------------------------------------------------------
+| Student Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('students', 'StudentController');
