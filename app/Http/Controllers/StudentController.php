@@ -107,10 +107,10 @@ class StudentController extends Controller
         $process->find($student->student_id)
                 ->update();
 
-        activity()
-            ->performedOn($process->student())
-            ->withProperties($process->student())
-            ->log('Student has been updated');
+        // activity()
+        //     ->performedOn($process->student())
+        //     ->withProperties($process->student())
+        //     ->log('Student has been updated');
 
         return $process->student();
     }
@@ -127,10 +127,10 @@ class StudentController extends Controller
 
         $student->delete();
 
-        activity()
-            ->performedOn($student)
-            ->withProperties($student)
-            ->log('Student has been deleted');
+        // activity()
+        //     ->performedOn($student)
+        //     ->withProperties($student)
+        //     ->log('Student has been deleted');
 
         return $student;
     }
